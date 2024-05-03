@@ -1,4 +1,4 @@
-### WIP-3: WorldLand Token Economics
+### WIP-4: WorldLand Token Economics
 
 Author: Gyeongdeok Maeng, Seungmin Kim, Minho Yoon, Heungno Lee
 DATE: 2024-05-03
@@ -32,13 +32,13 @@ Parameters:
 Block Reward:
 1. Halving Reward: There will be 4 halving events over 8 years. Each time, the block reward will be reduced by half.
 <p align="center">
-  <img src="../assets/wip-3/reward1.png" alt="alt text" style="width:30%;">
+  <img src="../assets/wip-4/reward1.png" alt="alt text" style="width:30%;">
 </p>
 
 
 2. Maturity Reward: 8 years after the genesis block (25,228,800 blocks), the block reward will increase by 4% annually.
 <p align="center">
-  <img src="../assets/wip-3/reward2.png" alt="alt text" style="width:30%;">
+  <img src="../assets/wip-4/reward2.png" alt="alt text" style="width:30%;">
 </p>
 
 
