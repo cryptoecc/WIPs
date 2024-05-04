@@ -14,19 +14,19 @@
 * Reference
 
 ### Abstract
-이 문서는 월드랜드 하드포크에서 진행되는 난이도 조절 알고리즘의 업데이트를 서술합니다[1].
+This document describes the update to the difficulty adjustment algorithm in the Worldland hard fork[1].
 
 ### Motivation
-월드랜드 난이도 조절 알고리즘의 현재 민감도는 1/8로 설정되어 있는데 이는 너무 높습니다. 이 설정에서는 블록의 블록 생성 시간(BGT)이 90초를 초과하면 다음 블록의 난이도가 최소 난이도 값으로 급격하게 감소합니다. 
+The current sensitivity of Worldland's difficulty adjustment algorithm is set to 1/8, which is too high. In this setting, if the Block Generation Time(BGT) of a block exceeds 90 seconds, the difficulty of the next block is drastically reduced to the minimum difficulty value.
 
-이 문제를 해결하려면 감도(S)를 줄여야 합니다. 본 보고서에서는 네트워크 계산 능력을 제대로 추종하기 위해 적절한 민감도 값을 제안하는 것을 목표로 합니다.
+To fix this problem you need to reduce the sensitivity. In this paper, we aim to propose appropriate sensitivity values to properly track the network computational power.
 
-민감도 값을 변경하면 합의 프로토콜이 수정되므로 블록체인의 하드포크가 실행됩니다. 민감도(S)는 블록의 난이도를 결정하는데, 이는 합의 프로토콜을 통해 검증해야 하는 중요한 변수입니다. 
+Changing the sensitivity value modifies the consensus protocol, thus triggering a hard fork in the blockchain. Sensitivity determines the difficulty of the block, which is an important variable that must be verified through the consensus protocol.
 
-이 업데이트가 이루어진 후에는 업데이트된 프로토콜을 따르는 노드는 더 이상 사용되지 않는 프로토콜을 따르는 노드가 채굴한 블록을 허용하지 않으며 그 반대의 경우도 마찬가지입니다.
+After this update is made, nodes following the updated protocol will no longer accept blocks mined by nodes following the deprecated protocol, and vice versa.
 
 ### Specification
-월드랜드(ECCPoW)의 난이도 조절 알고리즘은 다음과 같습니다. 다음 블록의 난이도는 해당 블록의 블록 생성 시간(BGT)에 대응하여 현재 난이도를 높이거나 낮추는 것으로 결정됩니다. 현재 월드랜드의 민감도 $S$는 $\frac{1}{8}$ 입니다.
+Worldland (ECCPoW)’s difficulty adjustment algorithm is as follows. The difficulty of the next block is determined by increasing or decreasing the current difficulty corresponding to the $BGT$ of that block. Worldland's current sensitivity $S$ is $\frac{1}{8}$.
 
 $$
 d_{i+1} = 
@@ -36,18 +36,17 @@ d_i + d_i\frac{ \max\left(1 - \frac{|BGT_i|}{10}, -99\right)}{8}, & \text{elsewh
 \end{cases}
 $$
 
-네트워크 컴퓨팅 능력이 급격히 변할 때, 높은 민감도는 난이도 값이 이를 추적하도록 하여 평균 블록 생성 시간을 유지하는 데 도움이 됩니다. 그러나 동시에 실제 네트워크 컴퓨팅 능력이 변하지 않는 경우에는 심각한 난이도 교란을 일으킬 수 있습니다. BGT에 따른 난이도의 변화를 민감도의 함수로 표현할 수 있으며 다음과 같이 해석할 수 있습니다.
+When network computing power changes rapidly, high sensitivity helps maintain average block creation times by ensuring the difficulty value tracks this. However, at the same time, if the actual network computing power does not change, it may cause serious difficulty disturbances. The change in difficulty according to $BGT$ can be expressed as a function of sensitivity and can be interpreted as follows.
 
-- $10 <= BGT < 20$이면 난이도를 변경하지 않습니다.
-- $BGT < 10$ 인 경우 난이도를 $(1+S)D$로 높입니다.
-- $BGT > 20$ 인 경우 난이도를 $(1−kS)D$로 낮춥니다. 이 때 $k = \lfloor \frac{BGT_i}{10} \rfloor - 1$ 이고 $k$가 -99보다 클 경우 $k$는 $-99$로 고정됩니다(난이도 감소 하한).
+- If $10 <= BGT < 20$, the difficulty will not be changed.
+- If $BGT < 10$, increase the difficulty to $(1+S)D$.
+- If $BGT > 20$, lower the difficulty to $(1−kS)D$. At this time, $k = \lfloor \frac{BGT_i}{10} \rfloor - 1$ and if $k$ is greater than $-99$, $k$ is fixed to $-99$ (lower limit of difficulty reduction).
 
-여기서 최대 증가율은 $(1+S)$로 제한되고 최대 감소율은 $\frac{-99}{S}$임을 알 수 있습니다. 증가하는 난이도는 보수적이어야 합니다. 블록체인의 난이도가 급격히 높아지면 해당 블록의 BGT가 상당히 길어져 모든 거래에 심각한 지연이 발생할 수 있습니다. 반대로 난이도를 낮추는 것은 사용자 입장에서는 심각한 문제가 없기 때문에 증가하는 것보다 더 공격적일 수 있습니다.
+Here we can see that the maximum growth rate is bounded by $(1+S)$ and the maximum decrease rate is $\frac{-99}{S}$. The increasing difficulty should be conservative. If the difficulty of the blockchain increases dramatically, the BGT for that block can become significantly longer, causing significant delays to all transactions. Conversely, lowering the difficulty may be more aggressive than increasing it because it poses no serious problems for the user.
 
-초기 월드랜드 네트워크의 경우 네트워크 해시 파워의 급격한 증가와 감소에 적응하기 위해 민감도를 1/8로 설정하였습니다. 최근 월드랜드 네트워크가 대중화되면서 많은 사용자들이 채굴 경쟁에 참여하고 있습니다. 결과적으로 WorldLand의 네트워크 해시파워는 획기적으로 증가했습니다. 현 시점에서는 몇몇 노드가 새로 가입하거나 탈퇴해도 더 이상 해시 파워에 큰 변화가 발생하지 않습니다. 이는 더 이상 BGT의 높은 변동성을 감수하면서 높은 민감도를 유지할 이유가 없다는 것을 의미합니다.
+For the initial WorldLand network, the sensitivity was set to $1/8$ to adapt to rapid increases and decreases in network hash power. Recently, as the Worldland network has become popular, many users are participating in mining competitions. As a result, WorldLand's network hash power has increased dramatically. At this point, hash power no longer significantly changes when a few nodes join or leave. This means that there is no longer a reason to maintain high sensitivity at the expense of high volatility in BGT.
 
-감도를 낮추면 평균 BGT에 의도하지 않은 변화가 발생합니다. 이를 보완하기 위해 우리는 WL의 난이도를 제어하기 위해 다음 공식을 제안합니다.
-
+Lowering the sensitivity will cause unintended changes in the average BGT. To complement this, we propose the following formula to control the difficulty of WL:
 
 $$ 
 d_{i+1} = 
@@ -57,14 +56,14 @@ d_i + d_i\frac{ \max\left(1 - \frac{|BGT_i|}{7}, -99\right)}{1024}, & \text{else
 \end{cases}
 $$
 
-즉, 민감도를 $\frac{1}{1024}$로 설정하고 임계값을 7로 설정했습니다. 난이도의 작은 변동성으로 목표 BGT(10초)를 달성할 수 있을 것으로 기대합니다.
+That is, we set the sensitivity to $\frac{1}{1024}$ and the threshold to $7$. We expect that the target BGT(10 seconds) can be achieved with small variations in difficulty.
 
 ### Simulation Result
 
-우리는 BGT는 기하 분포를 가지는 랜덤 변수이고 삼촌 블록이 없다고 가정합니다. 우리는 네트워크 컴퓨팅 성능에 대한 다양한 시나리오를 사용하여 20000개 블록에 대한 난이도와 BGT를 시뮬레이션했습니다. 
+We assume that BGT is a random variable with a geometric distribution and that there are no uncle blocks. We simulated the difficulty and BGT for 20000 blocks using various scenarios of network computing performance.
 
-<b>i.	해시 파워가 일정한 경우</b>  
-난이도가 초기 값의 $\pm 6$% 이내에서 유지되는 것을 확인할 수 있습니다. BGT 또한 의도한 대로의 분포를 가짐을 확인할 수 있습니다.
+<b>i. When hash power is constant</b>
+You can see that the difficulty is maintained within $\pm 6$% of the initial value. We can confirm that BGT also has the distribution as intended.
 <p align="center">
   <img src="img/difficulty_constant.png" alt="Difficulty Graph" width="45%">
   <img src="img/BGT_histogram_constant.png" alt="BGT Histogram" width="45%">
@@ -76,8 +75,8 @@ $$
 | Variance    | 87.34060|
 | Maximum BGT | 90.0    |
 
-<b>ii. 컴퓨팅 성능이 작은 변화를 가지는 경우</b>  
-컴퓨팅 성능을 정규화된 MSE = 0.01을 충족하는 추가 백색 가우스 잡음이 있는 상수로 모델링한 시나리오의 결과입니다. 앞선 첫 번째 시나리오와 비슷하지만 약간 증가된 분산값을 가집니다. 난이도는 초기 값의 $\pm 8$% 이내에서 유지됩니다.
+<b>ii. When computing performance has small changes</b>
+Results for a scenario where computing performance is modeled as a constant with additional white Gaussian noise satisfying normalized $MSE = 0.01$. Similar to the first scenario, but with slightly increased variance. Difficulty is maintained within $\pm 8$% of the initial value.
 <p align="center">
   <img src="img/difficulty_perturbation.png" alt="Difficulty Graph" width="45%">
 </p>
@@ -88,8 +87,8 @@ $$
 | Variance    | 91.40784|
 | Maximum BGT | 93.0    |
 
-<b>iii. 컴퓨팅 성능의 급격한 증가 시나리오</b>  
-이번에는 네트워크 컴퓨팅 파워가 급격히 증가하는 시나리오를 고려합니다. 이 시나리오는 대규모 채굴자가 블록체인에 새로 합류할 때 발생할 수 있습니다. 우리는 8000번째 블록에서 네트워크 컴퓨팅 파워가 초기 값의 4배로 증가한다고 모델링했습니다. 아래 표는 네트워크 컴퓨팅 파워의 변화를 난이도가 따라잡는데 필요한 응답 시간을 보여줍니다. 
+<b>iii. Scenario for rapid increase in computing power</b>
+This time we consider a scenario where network computing power increases rapidly. This scenario can occur when a new large miner joins the blockchain. We modeled that at block 8000 the network computing power increases to four times its initial value. The table below shows the response time required for difficulty to keep up with changes in network computing power.
 <p align="center">
   <img src="img/difficulty_steepincrease.png" alt="Difficulty Graph" width="45%">
 </p>
@@ -100,8 +99,8 @@ $$
 | 70.71% Response Time (blocks)     | 1504   |
 | Theoretical Response Time (blocks)| 1421   |
 
-<b>iv. 급격한 감소</b>  
-이번에는 네트워크 컴퓨팅 성능이 급격히 감소하는 시나리오를 고려합니다. 이 시나리오는 대규모 광부가 채굴을 중단하거나 일시적으로 연결이 끊어졌을 때 발생할 수 있습니다. 가파른 증가 시나리오에서도 비슷한 결과를 볼 수 있습니다.
+<b>iv. Sharp decline</b>
+This time, we consider a scenario where network computing performance decreases rapidly. This scenario can occur when a large miner stops mining or is temporarily disconnected. Similar results can be seen in the steep increase scenario.
 <p align="center">
   <img src="img/difficulty_steepdecrease.png" alt="Difficulty Graph" width="45%">
 </p>
@@ -111,19 +110,14 @@ $$
 | 90% Response Time (blocks)        | 1546 |
 | 70.71% Response Time (blocks)     | 832  |
 
-
-<b>v. 꾸준한 증가</b>  
-네트워크 컴퓨팅 파워가 20000 블록에 걸쳐 선형적으로 증가하고 최종적으로 초기 값의 4배에 도달했다고 가정합니다. 참고로 블록당 증가율은 최대 증가율보다 작습니다. 삼촌이 없다고 가정할때 최대 견딜 수 있는 증가율은 $1+\frac{1}{1024} = 1.0009766$ 입니다. 시뮬레이션에서 가정된 증가율은 $4^{\frac{1}{20000}} = 1.000069317$ 으로, 최대 증가율 이하이므로 컴퓨팅 파워 변화를 잘 따라잡을 수 있습니다.
+<b>v. Steady increase</b>
+We assume that the network computing power increases linearly over 20000 blocks and finally reaches 4 times its initial value. Please note that the growth rate per block is less than the maximum growth rate. Assuming there are no uncles, the maximum tolerable growth rate is $1+\frac{1}{1024} = 1.0009766$. The growth rate assumed in the simulation is $4^{\frac{1}{20000}} = 1.000069317$, which is below the maximum growth rate and can keep up well with changes in computing power.
 <p align="center">
   <img src="img/difficulty_steadyincrease.png" alt="Difficulty Graph" width="45%">
 </p>
 
-
 ### Conclusion
-시뮬레이션 결과는 우리의 새로운 공식의 난이도가 네트워크의 연산량 변화에 적절하게 대응함을 보여줍니다.
+Simulation results show that the difficulty of our new formulation appropriately responds to changes in the computational volume of the network.
 
 ### Implementation
-https://github.com/cryptoecc/WorldLand/blob/worldland/consensus/eccpow/LDPCDifficulty.go 에 구현되어 있습니다. 
-
-### Citation
-Please cite this document as:
+It is implemented at https://github.com/cryptoecc/WorldLand/blob/worldland/consensus/eccpow/LDPCDifficulty.go.
