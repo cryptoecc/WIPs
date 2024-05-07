@@ -2,7 +2,7 @@
 
 <pre>
   Title: WorldLand Token Economics
-  Status: Draft
+  Status: Final
   Type: Core
   Author: Heungno Lee <@lincolnkerry>, Gyeongdeok Maeng <@siddharth0a>, Seungmin Kim <@smin-k>
   Created: 2023-05-03
