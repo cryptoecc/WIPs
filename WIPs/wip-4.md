@@ -1,4 +1,4 @@
-### WIP-4: WorldLand Block Reward
+# WIP-4: WorldLand Block Reward
 
 <pre>
   Title: WorldLand Block Reward
