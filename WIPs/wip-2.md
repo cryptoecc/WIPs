@@ -85,7 +85,7 @@ s_1 \ldots s_l, s_{l+1} [1:j] & \text{if } n > 512
 \end{cases} \quad 
 $$
 
-where $ l = \lfloor \frac{n}{512} \rfloor $, $ j = n - 512 \times l $,
+where $l = \lfloor \frac{n}{512} \rfloor$, $j = n - 512 \times l$,
 
 $$ s_1 := Keccak512(Keccak256(CBH)∣∣nonce) \in \{0,1\}^{512} $$
 
@@ -112,7 +112,7 @@ A \\
 \end{bmatrix} \in \{0,1\}^{m \times n} \quad 
 $$
 
-Here, $\pi_i (A) $ is the $ i^{th}$ submatrix obtained by randomly permuting the columns of $A$, and $\pi_i$ is the order of the $i^{th}$ permutation. The base matrix $A$ is constructed such that each row has $w_r$ consecutive 1s at different positions, and it is defined as follows:
+Here, $\pi_i (A)$ is the $i^{th}$ submatrix obtained by randomly permuting the columns of $A$, and $\pi_i$ is the order of the $i^{th}$ permutation. The base matrix $A$ is constructed such that each row has $w_r$ consecutive 1s at different positions, and it is defined as follows:
 
 $$
 A :=
@@ -125,18 +125,18 @@ A :=
 $$
 
 $where$
-$$1_{w_r} := [1 \ \ldots \ 1] \in 1^{w_r}, $$
-$$0_{w_r} := [0 \ \ldots \ 0] \in 0^{w_r}. $$
+$$ 1_{w_r} := [1 \ \ldots \ 1] \in 1^{w_r}, $$
+$$ 0_{w_r} := [0 \ \ldots \ 0] \in 0^{w_r}. $$
 
 #### Construction of ECC puzzle generation functions and ECC puzzles
 
 The decoder takes the generated hash vector $r$ and parity check vector $H$ as inputs and produces an output vector $c$ of size $n$ through a message-passing algorithm.
 
-$$ D_{\text{mp}} : \{r, H\} \mapsto c \in \{0,1\}^{n \times l} $$
+$$ D_{\text{mp}} : \lbrace r, H\rbrace \mapsto c \in \lbrace 0,1\rbrace^{n \times l} $$
 
 The output vector $c$ is verified to determine if it is a valid codeword. There is a problem that codewords with either too small or too large Hamming weights can be easily found without going through the decoder. For example, if $c$ is a zero vector, $Hc$ is always 0. Therefore, this problem is solved by allowing only $c$ with a Hamming weight within a certain range as valid codewords. Denoting the Hamming weight of the codeword $c$ as $W(c)$, the set of valid codewords C is defined as follows:
 
-$$C := \{c \in  \{0,1\}^{n \times l}|Hc = 0_n, \ \frac{n}{4}< W(c) < \frac{3n}{4} \} $$
+$$ C := \lbrace c \in  \{0,1\}^{n \times l}|Hc = 0_n, \ \frac{n}{4}< W(c) < \frac{3n}{4} \rbrace $$
 
 If the output vector does not satisfy the above condition, the miner generates a new nonce and repeats all the steps. If the output vector satisfies the above condition, the miner stores the corresponding $c$, $n$, and nonce value in the block header and broadcasts the block. Nodes receiving the block verify the codeword and nonce of the block and add the block to the blockchain.
 
