@@ -5,7 +5,7 @@
   Title: Error-Correction Code based Proof-of-Work for ASIC Resistance
   Status: Draft
   Type: Core
-  Author: Seungmin Kim <@smin-k>, Haeung Choi <@Haeung9>, Gyeongdeok Maeng <@siddharth0a>
+  Author: Heungno Lee<@lincolnkerry>, Seungmin Kim <@smin-k>, Haeung Choi <@Haeung9>, Gyeongdeok Maeng <@siddharth0a>
   Created: 2023-05-03
   License: GNU Lesser General Public License v3.0
 </pre>
@@ -21,7 +21,6 @@
   - [Construction of ECC puzzle generation functions and ECC puzzles](#construction-of-ecc-puzzle-generation-functions-and-ecc-puzzles)
 * [Implementation](#implementation)
 * [References](#references)
-* [Copyright](#copyright)
 
 ## Abstract
 ECCPoW is a proof-of-work consensus protocol that utilizes error-correcting codes and decoders [1]. It employs a time-varying puzzle generation mechanism, where the puzzle changes for each block, to suppress specialized mining equipment. ECCPoW is used as the consensus mechanism for the EVM blockchain WorldLand [2].
@@ -74,7 +73,7 @@ The figure below illustrates the overall structure of ECCPoW. ECCPoW consists of
 3. Finally, in the result determination part, a decision is made based on the output provided by the decoder, as shown in Figure 1.
 
 <p align="center">
-  <img src="../wip-2/eccpow.png" alt="alt text" style="width:50%;">
+  <img src="../assets/wip-2/eccpow.png" alt="alt text" style="width:50%;">
 </p>
 
 
