@@ -1,17 +1,7 @@
 ### WIP-4: WorldLand Token Economics
 
-Author: Gyeongdeok Maeng, Seungmin Kim, Minho Yoon, Heungno Lee
-DATE: 2024-05-03
-
-| [Abstract](#abstract) |
-| [Motivation](#motivation) |
-| [Specification](#specification) |
-| [Economic Analysis](#economic-analysis) |
-| [Implementation](#implementation) |
-| [Reference](#reference) |
-
 <pre>
-  Title: WorldLand Difficulty Adjustment
+  Title: WorldLand Token Economics
   Status: Draft
   Type: Core
   Author: Heungno Lee <@lincolnkerry>, Gyeongdeok Maeng <@siddharth0a>, Seungmin Kim <@smin-k>
@@ -23,6 +13,7 @@ DATE: 2024-05-03
 * [Abstract](#abstract)
 * [Motivation](#motivation)
 * [Specification](#specification)
+* [Economic Analysis](#economic-analysis)
 * [Implementation](#implementation)
 * [Reference](#reference)
 
