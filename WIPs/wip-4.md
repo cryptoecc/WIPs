@@ -93,6 +93,8 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 			}	
 		}
 	}
+  ...
+}
 ```
 
 
