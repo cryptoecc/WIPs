@@ -87,7 +87,7 @@ $$
 
 where $l = \lfloor \frac{n}{512} \rfloor$, $j = n - 512 \times l$,
 
-$$ s_1 := Keccak512(Keccak256(CBH)∣∣nonce) \in \{0,1\}^{512} $$
+$s_1 := Keccak512(Keccak256(CBH)∣∣nonce) \in \{0,1\}^{512}$
 
 and
 
