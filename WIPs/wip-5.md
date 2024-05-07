@@ -65,8 +65,8 @@ We assume that BGT is a random variable with a geometric distribution and that t
 <b>i. When hash power is constant</b>
 You can see that the difficulty is maintained within $\pm 6$% of the initial value. We can confirm that BGT also has the distribution as intended.
 <p align="center">
-  <img src="assets/wip-5/difficulty_constant.png" alt="Difficulty Graph" width="45%">
-  <img src="assets/wip-5/BGT_histogram_constant.png" alt="BGT Histogram" width="45%">
+  <img src="../assets/wip-5/difficulty_constant.png" alt="Difficulty Graph" width="45%">
+  <img src="../ssets/wip-5/BGT_histogram_constant.png" alt="BGT Histogram" width="45%">
 </p>
 
 | Statistic   | Value   |
@@ -78,9 +78,8 @@ You can see that the difficulty is maintained within $\pm 6$% of the initial val
 <b>ii. When computing performance has small changes</b>
 Results for a scenario where computing performance is modeled as a constant with additional white Gaussian noise satisfying normalized $MSE = 0.01$. Similar to the first scenario, but with slightly increased variance. Difficulty is maintained within $\pm 8$% of the initial value.
 <p align="center">
-  <img src="assets/wip-5/difficulty_perturbation.png" alt="Difficulty Graph" width="45%">
+  <img src="../assets/wip-5/difficulty_perturbation.png" alt="Difficulty Graph" width="45%">
 </p>
- 
 | Statistic   | Value   |
 |-------------|---------|
 | Mean BGT    | 9.87925 |
@@ -90,7 +89,7 @@ Results for a scenario where computing performance is modeled as a constant with
 <b>iii. Scenario for rapid increase in computing power</b>
 This time we consider a scenario where network computing power increases rapidly. This scenario can occur when a new large miner joins the blockchain. We modeled that at block 8000 the network computing power increases to four times its initial value. The table below shows the response time required for difficulty to keep up with changes in network computing power.
 <p align="center">
-  <img src="assets/wip-5/difficulty_steepincrease.png" alt="Difficulty Graph" width="45%">
+  <img src="../assets/wip-5/difficulty_steepincrease.png" alt="Difficulty Graph" width="45%">
 </p>
 
 | Statistic   | Value   |
@@ -102,7 +101,7 @@ This time we consider a scenario where network computing power increases rapidly
 <b>iv. Sharp decline</b>
 This time, we consider a scenario where network computing performance decreases rapidly. This scenario can occur when a large miner stops mining or is temporarily disconnected. Similar results can be seen in the steep increase scenario.
 <p align="center">
-  <img src="assets/wip-5/difficulty_steepdecrease.png" alt="Difficulty Graph" width="45%">
+  <img src="../assets/wip-5/difficulty_steepdecrease.png" alt="Difficulty Graph" width="45%">
 </p>
 
 | Statistic   | Value   |
@@ -113,7 +112,7 @@ This time, we consider a scenario where network computing performance decreases 
 <b>v. Steady increase</b>
 We assume that the network computing power increases linearly over 20000 blocks and finally reaches 4 times its initial value. Please note that the growth rate per block is less than the maximum growth rate. Assuming there are no uncles, the maximum tolerable growth rate is $1+\frac{1}{1024} = 1.0009766$. The growth rate assumed in the simulation is $4^{\frac{1}{20000}} = 1.000069317$, which is below the maximum growth rate and can keep up well with changes in computing power.
 <p align="center">
-  <img src="assets/wip-5/difficulty_steadyincrease.png" alt="Difficulty Graph" width="45%">
+  <img src="../assets/wip-5/difficulty_steadyincrease.png" alt="Difficulty Graph" width="45%">
 </p>
 
 ### Conclusion
