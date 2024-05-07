@@ -10,6 +10,22 @@ DATE: 2024-05-03
 | [Implementation](#implementation) |
 | [Reference](#reference) |
 
+<pre>
+  Title: WorldLand Difficulty Adjustment
+  Status: Draft
+  Type: Core
+  Author: Heungno Lee <@lincolnkerry>, Gyeongdeok Maeng <@siddharth0a>, Seungmin Kim <@smin-k>
+  Created: 2023-05-03
+  License: GNU Lesser General Public License v3.0
+</pre>
+
+## Table of Contents
+* [Abstract](#abstract)
+* [Motivation](#motivation)
+* [Specification](#specification)
+* [Implementation](#implementation)
+* [Reference](#reference)
+
 
 ## Abstract
 WorldLand proposes a new token economics model to overcome the limitations of Bitcoin and the dollar. After going through 4 halving events over 8 years, an annual fixed inflation rate of 4% will be introduced, aiming for a stable and predictable money supply in the long term.
@@ -48,7 +64,51 @@ Block Reward:
 - However, for WorldLand tokens to be used as actual currency, challenges such as securing legal status and increasing market acceptance remain.
 
 ## Implementation
-https://github.com/cryptoecc/ETH-ECC/blob/master/consensus/eccpow/consensus.go [4]
+
+```go
+// AccumulateRewards credits the coinbase of the given block with the mining
+// reward. The total reward consists of the static block reward and rewards for
+// included uncles. The coinbase of each uncle block is also rewarded.
+func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header *types.Header, uncles []*types.Header) {
+	// Select the correct block reward based on chain progression
+	var blockReward = big.NewInt(FrontierBlockReward.Int64())
+
+	//blockReward := FrontierBlockReward
+	if config.IsByzantium(header.Number) {
+		blockReward = ByzantiumBlockReward
+	}
+	if config.IsConstantinople(header.Number) {
+		blockReward = ConstantinopleBlockReward
+	}
+	if config.IsWorldland(header.Number) {
+		blockReward = big.NewInt(WorldLandBlockReward.Int64())
+		
+		if config.IsWorldLandHalving(header.Number) {
+			blockHeight := header.Number.Uint64()
+			HalvingLevel := (blockHeight - 1 - config.WorldlandBlock.Uint64()) / HALVING_INTERVAL
+			
+			blockReward.Rsh(blockReward, uint(HalvingLevel))
+			
+		} else if config.IsWorldLandMaturity(header.Number) {
+			blockHeight := header.Number.Uint64()
+			blockReward = big.NewInt(1e+18)
+
+			MaturityLevel := (blockHeight - 1 - config.HalvingEndTime.Uint64()) / MATURITY_INTERVAL
+						
+			blockReward.Mul(blockReward, SumRewardUntilMaturity)
+			blockReward.Div(blockReward, new(big.Int).SetUint64(MATURITY_INTERVAL)) 
+			
+			blockReward.Mul(blockReward, big.NewInt(4))
+			blockReward.Div(blockReward, big.NewInt(100))
+
+			for i := 0; i < int(MaturityLevel); i++ {
+				blockReward.Mul(blockReward, big.NewInt(104))
+				blockReward.Div(blockReward, big.NewInt(100))
+			}	
+		}
+	}
+```
+[4]
 
 
 
