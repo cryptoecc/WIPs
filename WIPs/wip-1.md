@@ -1,5 +1,6 @@
+# WIP-1: WIP Purpose and Guidelines
+
 <pre>
-  WIP: 1
   Title: WIP Purpose and Guidelines
   Status: Draft
   Type: Informational
@@ -8,7 +9,7 @@
   License: CC0-1.0
 </pre>
 
-==What is a WIP?==
+## What is a WIP?
 
 WIP stands for Worldland Improvement Proposal. A WIP is a design document that either describes a new feature for the Worldland network or its processes, or provides information to the Worldland community. The WIP should concisely explain the proposed improvement and the rationale behind it.
 
@@ -16,7 +17,7 @@ WIPs are intended to be the primary medium for proposing new features, collectin
 
 As WIPs are maintained in a versioned repository as text files, their revision history is the historical record of the proposed improvement.
 
-==WIP Workflow==
+## WIP Workflow
 
 The WIP process begins with an idea for improving the Worldland network. The WIP author drafts a proposal in accordance with the guidelines described in this document, and submits it to the WIPs repository as a pull request. The author must build community consensus around the proposal and document dissenting opinions.
 
@@ -24,7 +25,7 @@ Once the draft is complete, the pull request will be merged and the WIP will rec
 
 For a WIP to be "Accepted," it must demonstrate sufficient community support and a clear intention to implement the proposal. Once a WIP is implemented and adopted by the community, its status will be changed to "Final."
 
-==WIP Format==
+## WIP Format
 
 Each WIP should have the following parts:
 
@@ -48,7 +49,7 @@ Each WIP should have the following parts:
 
 * The final implementation must include test code and documentation appropriate for the Worldland network.
 
-==WIP Licensing==
+## WIP Licensing
 
 All WIPs must be released under the Creative Commons CC0 1.0 Universal license. By submitting a WIP, authors agree to release their work under this license.
 
