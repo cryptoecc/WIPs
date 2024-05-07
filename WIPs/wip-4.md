@@ -37,16 +37,11 @@ Parameters:
 - Maxhalving: 4
 
 Block Reward:
-1. Halving Reward: There will be 4 halving events over 8 years. Each time, the block reward will be reduced by half.
-<p align="center">
-  <img src="../assets/wip-4/reward1.png" alt="alt text" style="width:30%;">
-</p>
+1. Halving Reward: There will be 3 halving events over 8 years. Each time, the block reward will be reduced by half. 
 
+\*Maxhalving: 4 does not mean that the halving event occurs 4 times, but rather that there are 4 epochs that experience halving.
 
 2. Maturity Reward: 8 years after the genesis block (25,228,800 blocks), the block reward will increase by 4% annually.
-<p align="center">
-  <img src="../assets/wip-4/reward2.png" alt="alt text" style="width:30%;">
-</p>
 
 
 ## Economic Analysis
