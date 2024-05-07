@@ -66,7 +66,7 @@ We assume that BGT is a random variable with a geometric distribution and that t
 You can see that the difficulty is maintained within $\pm 6$% of the initial value. We can confirm that BGT also has the distribution as intended.
 <p align="center">
   <img src="../assets/wip-5/difficulty_constant.png" alt="Difficulty Graph" width="45%">
-  <img src="../ssets/wip-5/BGT_histogram_constant.png" alt="BGT Histogram" width="45%">
+  <img src="../assets/wip-5/BGT_histogram_constant.png" alt="BGT Histogram" width="45%">
 </p>
 
 | Statistic   | Value   |
