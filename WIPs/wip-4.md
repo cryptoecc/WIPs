@@ -1,7 +1,7 @@
-### WIP-4: WorldLand Token Economics
+### WIP-4: WorldLand Block Reward
 
 <pre>
-  Title: WorldLand Token Economics
+  Title: WorldLand Block Reward
   Status: Final
   Type: Core
   Author: Heungno Lee <@lincolnkerry>, Gyeongdeok Maeng <@siddharth0a>, Seungmin Kim <@smin-k>
