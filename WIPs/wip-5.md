@@ -1,21 +1,27 @@
 
-## WIP-5: Update Sensitivity of WorldLand Difficulty Control Algorithm
+# WIP-5: Update Sensitivity of WorldLand Difficulty Control Algorithm
 
-<b>Author</b> Seungmin Kim 
-<b>Created</b> 2024-05-05
+<pre>
+  Title: Update Sensitivity of WorldLand Difficulty Control Algorithm
+  Status: Finalize
+  Type: Core
+  Author: Heungno Lee<@lincolnkerry>, Seungmin Kim <@smin-k>, Haeung Choi <@Haeung9>, Gyeongdeok Maeng <@siddharth0a>
+  Created: 2023-05-05
+  License: GNU Lesser General Public License v3.0
+</pre>
 
-### Table of Contents
-* Abstract
-* Motivation
-* Specification
-* Simulation Result
-* Conclusion
-* Implementation
+## Table of Contents
+* [Abstract](#abstract)
+* [Motivation](#motivation)
+* [Specification](#specification)
+* [Simulation Result](#simulation-result)
+* [Conclusion](#conclusion)
+* [Implementation](#implementation)
 
-### Abstract
+## Abstract
 This document describes the update to the difficulty adjustment algorithm in the Worldland hard fork.
 
-### Motivation
+## Motivation
 The current sensitivity of Worldland's difficulty adjustment algorithm is set to 1/8, which is too high. In this setting, if the Block Generation Time(BGT) of a block exceeds 90 seconds, the difficulty of the next block is drastically reduced to the minimum difficulty value.
 
 To fix this problem you need to reduce the sensitivity. In this paper, we aim to propose appropriate sensitivity values to properly track the network computational power.
@@ -24,7 +30,7 @@ Changing the sensitivity value modifies the consensus protocol, thus triggering 
 
 After this update is made, nodes following the updated protocol will no longer accept blocks mined by nodes following the deprecated protocol, and vice versa.
 
-### Specification
+## Specification
 Worldland (ECCPoW)’s difficulty adjustment algorithm is as follows. The difficulty of the next block is determined by increasing or decreasing the current difficulty corresponding to the $BGT$ of that block. Worldland's current sensitivity $S$ is $\frac{1}{8}$.
 
 $$
@@ -57,7 +63,7 @@ $$
 
 That is, we set the sensitivity to $\frac{1}{1024}$ and the threshold to $7$. We expect that the target BGT(10 seconds) can be achieved with small variations in difficulty.
 
-### Simulation Result
+## Simulation Result
 
 We assume that BGT is a random variable with a geometric distribution and that there are no uncle blocks. We simulated the difficulty and BGT for 20000 blocks using various scenarios of network computing performance.
 
@@ -115,8 +121,8 @@ We assume that the network computing power increases linearly over 20000 blocks 
   <img src="../assets/wip-5/difficulty_steadyincrease.png" alt="Difficulty Graph" width="45%">
 </p>
 
-### Conclusion
+## Conclusion
 Simulation results show that the difficulty of our new formulation appropriately responds to changes in the computational volume of the network.
 
-### Implementation
+## Implementation
 It is implemented at https://github.com/cryptoecc/WorldLand/blob/worldland/consensus/eccpow/LDPCDifficulty.go.
