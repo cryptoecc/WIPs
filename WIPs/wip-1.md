@@ -6,7 +6,7 @@
   Type: Informational
   Author: Gyeongdeok Maeng <@siddharth0a>  
   Created: 2023-05-03
-  License: CC0-1.0
+  License: GNU Lesser General Public License v3.0
 </pre>
 
 ## What is a WIP?
