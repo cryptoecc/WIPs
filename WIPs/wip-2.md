@@ -87,7 +87,7 @@ $$
 
 where $l = \lfloor \frac{n}{512} \rfloor$, $j = n - 512 \times l$,
 
-$s_1 := Keccak512(Keccak256(CBH)∣∣nonce) \in \{0,1\}^{512}$
+$$s_1 := Keccak512(Keccak256(CBH)∣∣nonce) \in \{0,1\}^{512} $$
 
 and
 
@@ -124,9 +124,9 @@ A :=
 \end{bmatrix} \in \{0,1\}^{m/w_c \times n}
 $$
 
-$where$
-$$ 1_{w_r} := [1 \ \ldots \ 1] \in 1^{w_r}, $$
-$$ 0_{w_r} := [0 \ \ldots \ 0] \in 0^{w_r}. $$
+where  
+
+$$1_{w_r} := [1 \ \ldots \ 1] \in 1^{w_r},\quad and \quad 0_{w_r} := [0 \ \ldots \ 0] \in 0^{w_r}. $$
 
 #### Construction of ECC puzzle generation functions and ECC puzzles
 
