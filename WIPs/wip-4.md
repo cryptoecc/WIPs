@@ -13,8 +13,8 @@
 * [Abstract](#abstract)
 * [Motivation](#motivation)
 * [Specification](#specification)
-* [Economic Analysis](#economic-analysis)
 * [Implementation](#implementation)
+* [Reasoning](#reasoning)
 * [Reference](#reference)
 
 
@@ -44,10 +44,6 @@ Block Reward:
 2. Maturity Reward: 8 years after the genesis block (25,228,800 blocks), the block reward will increase by 4% annually.
 
 
-## Economic Analysis
-- The proposed model provides a stable and predictable money supply in the long term.
-- The continuous block reward after the maturity period incentivizes miners, maintaining the stability of the network.
-- However, for WorldLand tokens to be used as actual currency, challenges such as securing legal status and increasing market acceptance remain.
 
 ## Implementation
 
@@ -96,6 +92,11 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
   ...
 }
 ```
+
+## Reasoning
+- The proposed model provides a stable and predictable money supply in the long term.
+- The continuous block reward after the maturity period incentivizes miners, maintaining the stability of the network.
+- However, for WorldLand tokens to be used as actual currency, challenges such as securing legal status and increasing market acceptance remain.
 
 
 
