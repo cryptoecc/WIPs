@@ -85,9 +85,9 @@ s_1 \ldots s_l, s_{l+1} [1:j] & \text{if } n > 512
 \end{cases} \quad 
 $$
 
-where $$ l = \lfloor \frac{n}{512} \rfloor $$, $$ j = n - 512 \times l $$,
+where $l = \lfloor \frac{n}{512} \rfloor $$, $$ j = n - 512 \times l$,
 
-$$ s_1 := Keccak512(Keccak256(CBH)∣∣nonce) \in \{0,1\}^{512} $$
+$s_1 := Keccak512(Keccak256(CBH)∣∣nonce) \in \{0,1\}^{512}$
 
 and
 
