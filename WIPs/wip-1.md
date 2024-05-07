@@ -2,9 +2,9 @@
 
 <pre>
   Title: WIP Purpose and Guidelines
-  Status: Draft
+  Status: Final
   Type: Informational
-  Author: Gyeongdeok Maeng <@siddharth0a>  
+  Author: Heungno Lee<@lincolnkerry>, Gyeongdeok Maeng <@siddharth0a>
   Created: 2023-05-03
   License: GNU Lesser General Public License v3.0
 </pre>
