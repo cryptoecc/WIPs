@@ -3,7 +3,7 @@
 
 <pre>
   Title: Error-Correction Code based Proof-of-Work for ASIC Resistance
-  Status: Draft
+  Status: Final
   Type: Core
   Author: Heungno Lee<@lincolnkerry>, Seungmin Kim <@smin-k>, Haeung Choi <@Haeung9>, Gyeongdeok Maeng <@siddharth0a>
   Created: 2023-05-03
