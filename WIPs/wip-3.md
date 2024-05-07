@@ -1,13 +1,20 @@
-### WIP-3: WorldLand Difficulty Adjustment
+# WIP-3: WorldLand Difficulty Adjustment
 
-Author: Minho Yoon, Gyeongdeok Maeng, Seungmin Kim, Heung-No Lee
-DATE: 2024-05-03
+<pre>
+  Title: WorldLand Difficulty Adjustment
+  Status: Draft
+  Type: Core
+  Author: Heungno Lee<@lincolnkerry>, Seungmin Kim <@smin-k>, Gyeongdeok Maeng <@siddharth0a>, Minho Yoon <@Pytype>
+  Created: 2023-05-03
+  License: GNU Lesser General Public License v3.0
+</pre>
 
-| [Abstract](#abstract) |
-| [Motivation](#motivation) |
-| [Specification](#specification) |
-| [Implementation](#implementation) |
-| [Reference](#reference) |
+## Table of Contents
+* [Abstract](#abstract)
+* [Motivation](#motivation)
+* [Specification](#specification)
+* [Implementation](#implementation)
+* [Reference](#reference)
 
 
 ## Abstract
