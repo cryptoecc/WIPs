@@ -112,7 +112,7 @@ A \\
 \end{bmatrix} \in \{0,1\}^{m \times n} \quad 
 $$
 
-Here, $\pi_i (A) $ is the $ i^{th}$ submatrix obtained by randomly permuting the columns of $A$, and $\pi_i$ is the order of the $i^{th}$ permutation. The base matrix $A$ is constructed such that each row has $w_r$ consecutive 1s at different positions, and it is defined as follows:
+Here, $\pi_i (A)$ is the $i^{th}$ submatrix obtained by randomly permuting the columns of $A$, and $\pi_i$ is the order of the $i^{th}$ permutation. The base matrix $A$ is constructed such that each row has $w_r$ consecutive 1s at different positions, and it is defined as follows:
 
 $$
 A :=
