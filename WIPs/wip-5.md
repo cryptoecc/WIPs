@@ -3,7 +3,7 @@
 
 <pre>
   Title: Update Sensitivity of WorldLand Difficulty Control Algorithm
-  Status: Finalize
+  Status: Final
   Type: Core
   Author: Heungno Lee<@lincolnkerry>, Seungmin Kim <@smin-k>, Haeung Choi <@Haeung9>, Gyeongdeok Maeng <@siddharth0a>
   Created: 2023-05-05
