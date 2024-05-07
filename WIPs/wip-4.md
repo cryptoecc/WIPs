@@ -22,9 +22,9 @@
 WorldLand proposes a new token economics model to overcome the limitations of Bitcoin and the dollar. After going through 4 halving events over 8 years, an annual fixed inflation rate of 4% will be introduced, aiming for a stable and predictable money supply in the long term.
 
 ## Motivation
-Bitcoin has a limited supply and undergoes halving every 4 years [1]. This can lead to deflationary characteristics in the long run and decrease the velocity of money circulation. On the other hand, the dollar is losing its credibility due to unpredictable money supply policies. The tokenomics of some other cryptocurrencies are unsustainable due to reckless supply and unmanageable inflation [2].
+Bitcoin has a limited supply and undergoes halving every 4 years[1]. This can lead to deflationary characteristics in the long run and decrease the velocity of money circulation. On the other hand, the dollar is losing its credibility due to unpredictable money supply policies. The tokenomics of some other cryptocurrencies are unsustainable due to reckless supply and unmanageable inflation[2].
 
-WorldLand seeks to solve these problems based on Milton Friedman's quantity theory of money, permanent income hypothesis, and real economic data. Friedman argued that the growth rate of money supply should match the inflation rate in the long run [3]. Also, according to the permanent income hypothesis, consumption is influenced not only by current income but also by expectations about the future.
+WorldLand seeks to solve these problems based on Milton Friedman's quantity theory of money, permanent income hypothesis, and real economic data. Friedman argued that the growth rate of money supply should match the inflation rate in the long run[3]. Also, according to the permanent income hypothesis, consumption is influenced not only by current income but also by expectations about the future.
 
 ## Specification
 Parameters:
@@ -51,10 +51,10 @@ Block Reward:
 
 ## Implementation
 
+
+AccumulateRewards credits the coinbase of the given block with the mining reward. The total reward consists of the static block reward and rewards for included uncles. The coinbase of each uncle block is also rewarded[4].
+
 ```go
-// AccumulateRewards credits the coinbase of the given block with the mining
-// reward. The total reward consists of the static block reward and rewards for
-// included uncles. The coinbase of each uncle block is also rewarded.
 func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header *types.Header, uncles []*types.Header) {
 	// Select the correct block reward based on chain progression
 	var blockReward = big.NewInt(FrontierBlockReward.Int64())
@@ -94,7 +94,6 @@ func accumulateRewards(config *params.ChainConfig, state *state.StateDB, header 
 		}
 	}
 ```
-[4]
 
 
 
