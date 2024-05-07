@@ -51,10 +51,4 @@ Each WIP should have the following parts:
 
 ## WIP Licensing
 
-All WIPs must be released under the Creative Commons CC0 1.0 Universal license. By submitting a WIP, authors agree to release their work under this license.
-
-==See Also==
-
-* [EIP-1](https://eips.ethereum.org/EIPS/eip-1)
-* [BIP-1](https://github.com/bitcoin/bips/blob/master/bip-0001.mediawiki)
-* [BIP-2](https://github.com/bitcoin/bips/blob/master/bip-0002.mediawiki)
+All WIPs must be released under the GNU Lesser General Public License v3.0, also included in our repository in the COPYING.LESSER file.
