@@ -68,9 +68,10 @@ func getTable(level int ) difficulty {
 
 ### Difficulty Adjustment
 In Ethereum 1.0, miners repeat the task of finding a nonce value that makes the result of Keccak-256 less than the number of dividing $2^{256}$ by the block difficulty. Since the result of the hash function is pseudo-random, the mining probability has a uniform distribution.
-$$
+```math
 (Mining\,Probability)=\frac{n_{valid}}{2^{256}}≈\frac{\frac{2^{256}}{H_d}}{2^{256}}=\frac{1}{H_d}
 $$
+```
 
 Ethereum PoW, which has the above property, the difficulty is simply calculated based on the time difference between the creation of the current block and the previous block  [1].
 
